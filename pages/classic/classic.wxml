@@ -2,7 +2,7 @@
 <view class="container">
   <view class="header">
     <h-episode class="episode" index="{{classic.index}}"  />
-    <h-like class="like" bind:like="onLike" like="{{classic.like_status}}" count="{{classic.fav_nums}}"  />
+    <h-like class="like" bind:like="onLike" like="{{likeStatus}}" count="{{likeCount}}"  />
   </view>
 
   <h-movie img="{{classic.image}}" content="{{classic.content}}" />

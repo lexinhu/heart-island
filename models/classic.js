@@ -58,6 +58,5 @@ class ClassicModel extends HTTP {
     const key = 'classic-' + index
     return key
   }
-
 }
 export { ClassicModel }
