@@ -15,8 +15,11 @@ class LikeModel extends HTTP {
   // art_id: 点赞对象,例如你想对电影进行点赞，那这个参数就是电影的id号
   // type：点赞类型分为四种：100 电影 200 音乐 300 句子 400 书籍
   getClassicLikeStatus(artID, category, sCallback) {
-    return api.request({
-      url: `classic/${category}/${artID}/favor`
+    this.request({
+      url: `classic/${category}/${artID}/favor`,
+      success(res){
+        sCallback(res)
+      }
     })
   }
 

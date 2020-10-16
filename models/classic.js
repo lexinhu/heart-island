@@ -36,9 +36,7 @@ class ClassicModel extends HTTP {
   }
 
   isLatest(index) {
-    console.log(index)
     let latestIndex = this._getLatestIndex()
-    console.log(latestIndex)
     return latestIndex == index ? true : false;
   }
 
