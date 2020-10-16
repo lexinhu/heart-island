@@ -1,2 +1,10 @@
 <!--pages/classic/classic.wxml-->
-<h-like/>
+<view class="container">
+  <view class="header">
+    <h-episode class="episode" index="{{classic.index}}"  />
+    <h-like class="like" bind:like="onLike" like="{{classic.like_status}}" count="{{classic.fav_nums}}"  />
+  </view>
+
+  <h-movie img="{{classic.image}}" content="{{classic.content}}" />
+  <h-navi class="navi" bind:left="onLeft" bind:right="onRight" title="{{classic.title}}" first="{{first}}" latest="{{latest}}" />
+</view>

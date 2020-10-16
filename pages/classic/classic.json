@@ -1,5 +1,8 @@
 {
   "usingComponents": {
-    "h-like":"../../components/like"
+    "h-like": "../../components/like",
+    "h-movie": "../../components/classic/movie",
+    "h-episode": "../../components/episode",
+    "h-navi": "../../components/navi"
   }
 }

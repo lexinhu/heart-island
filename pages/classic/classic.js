@@ -1,25 +1,53 @@
 // pages/classic/classic.js
-Page({
 
+import { ClassicModel } from '../../models/classic'
+import { LikeModel } from '../../models/like'
+
+let classicModel = new ClassicModel()
+let likeModel = new LikeModel()
+
+Page({
   /**
    * 页面的初始数据
    */
   data: {
-
+    classic: null,
+    latest: true,
+    first: false
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    wx.request({
-      url: 'http://bl.7yue.pro/v1/classic/latest',
-      header: {
-        appkey: "ddtyxfZOGLVfDiKG"
-      },
-      success: (res) => {
-        console.log(res)
-      }
+    classicModel.getLatest((res) => {
+      this.setData({
+        classic: res
+      })
+    })
+  },
+
+  onLike: function (event) {
+    let behavior = event.detail.behavior
+    likeModel.like(behavior, this.data.classic.id, this.data.classic.type)
+  },
+
+  onLeft: function (event) {
+    this._findClassic('next')
+  },
+
+  onRight: function (event) {
+    this._findClassic('previous')
+  },
+
+  _findClassic: function (nextOrPrevious) {
+    let index = this.data.classic.index
+    classicModel.getClassic(index, nextOrPrevious, (res) => {
+      this.setData({
+        classic: res,
+        latest: classicModel.isLatest(res.index),
+        first: classicModel.isFirst(res.index)
+      })
     })
   },
 
